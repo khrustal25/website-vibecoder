@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Елена Хрусталева - сайты, AI, автоматизации</title>
+  <meta name="description" content="Создание сайтов, веб-сервисов, AI-ассистентов, чат-ботов и автоматизаций для экспертов, предпринимателей и онлайн-проектов.">
+  <meta name="author" content="Елена Хрусталева">
+  <meta name="theme-color" content="#FDFBF7">
+
+  <!-- Open Graph — превью при отправке ссылки -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Елена Хрусталева - цифровые продукты с помощью AI">
+  <meta property="og:description" content="Сайты, сервисы, AI-ассистенты, чат-боты и автоматизации для экспертов и бизнеса.">
+  <!-- Рекомендация: позже добавить og:image — изображение превью 1200 × 630 пикселей -->
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238B6B4A'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia, serif' font-size='16' fill='%23FDFBF7'%3EL%3C/text%3E%3C/svg%3E">
+
+  <!-- Шрифты: Playfair Display — заголовки, Montserrat — текст и интерфейс -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=adapt-20261007">
+  <style>
+    /* Hero fullscreen 16:9 — шапка: серый фон + шоколадный текст */
+    body:has(.hero--bleed) .header:not(.is-scrolled) {
+      border-bottom-color: transparent;
+    }
+
+    body:has(.hero--bleed) .header:not(.is-scrolled)::before {
+      background: rgba(196, 192, 188, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: none;
+    }
+
+    body:has(.hero--bleed) .header:not(.is-scrolled) .logo__name,
+    body:has(.hero--bleed) .header:not(.is-scrolled) .nav__link {
+      color: #3c2d26;
+    }
+
+    body:has(.hero--bleed) .header:not(.is-scrolled) .nav__link::after {
+      background: #8b6b4a;
+    }
+
+    body:has(.hero--bleed) .header:not(.is-scrolled) .burger__line {
+      background: #3c2d26;
+    }
+
+    body:has(.hero--bleed) .header:not(.is-scrolled) .header__cta {
+      background: #3c2d26;
+      color: #f5ebe0;
+      box-shadow: none;
+    }
+
+    body:has(.hero--bleed) .header:not(.is-scrolled) .header__cta:hover {
+      background: #2c211c;
+    }
+
+    .hero--bleed {
+      position: relative;
+      isolation: isolate;
+      min-height: min(100vh, 100dvh);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--header-h) + 24px) 0 72px;
+      background-color: #2c211c;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(24, 16, 12, 0.92) 0%,
+          rgba(36, 26, 20, 0.88) 32%,
+          rgba(44, 33, 28, 0.55) 48%,
+          rgba(44, 33, 28, 0.18) 58%,
+          rgba(44, 33, 28, 0) 68%
+        ),
+        url("images/hero-bg.jpg");
+      background-size: cover, 118% auto;
+      background-position: center, 0% 42%;
+      background-repeat: no-repeat;
+      color: #f5ebe0;
+    }
+
+    .hero--bleed .hero__grid {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: min(100% - 40px, var(--container));
+      margin-inline: auto;
+    }
+
+    .hero--bleed .hero__content {
+      max-width: min(28rem, 100%);
+      margin-right: auto;
+      min-width: 0;
+    }
+
+    .hero--bleed .hero__name {
+      display: inline-block;
+      margin: 0 0 14px;
+      padding: 8px 18px;
+      color: #ffffff;
+      text-shadow: none;
+      background: rgba(60, 45, 38, 0.48);
+      border: 1.5px solid rgba(139, 107, 74, 0.75);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero--bleed .eyebrow,
+    .hero--bleed .hero__note {
+      color: rgba(253, 248, 243, 0.9);
+      margin-bottom: 28px;
+      text-shadow: 0 1px 12px rgba(24, 16, 12, 0.55);
+      letter-spacing: 0.08em;
+      white-space: normal;
+      max-width: 28ch;
+      line-height: 1.45;
+    }
+
+    .hero--bleed h1 {
+      color: #fdf8f3;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-size: clamp(1.75rem, 1rem + 2.2vw, 3rem);
+      white-space: normal;
+      margin-top: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      line-height: 1.15;
+    }
+
+    .hero--bleed .accent {
+      color: #e2c4a0;
+    }
+
+    .hero--bleed .hero__lead {
+      color: rgba(245, 235, 224, 0.9);
+      max-width: 40ch;
+    }
+
+    .hero--bleed .hero__photo {
+      display: none;
+    }
+
+    .hero--bleed .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: max-content;
+      max-width: 100%;
+    }
+
+    .hero--bleed .hero__actions .btn {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .hero--bleed .btn--primary {
+      background: #f5ebe0;
+      color: #3c2d26;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero--bleed .btn--primary:hover {
+      background: #e8ddd2;
+      color: #2c211c;
+    }
+
+    .hero--bleed .btn--secondary {
+      background: transparent;
+      color: #f5ebe0;
+      border-color: rgba(245, 235, 224, 0.45);
+    }
+
+    .hero--bleed .btn--secondary:hover {
+      background: rgba(245, 235, 224, 0.12);
+      box-shadow: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero--bleed {
+        align-items: flex-end;
+        padding-bottom: 56px;
+        background-image:
+          linear-gradient(
+            180deg,
+            transparent 18%,
+            rgba(44, 33, 28, 0.62) 48%,
+            rgba(30, 22, 18, 0.92) 100%
+          ),
+          url("images/hero-bg.jpg");
+        background-size: cover, 135% auto;
+        background-position: center, 0% 26%;
+        background-repeat: no-repeat;
+      }
+
+      .hero--bleed .hero__content {
+        max-width: min(100%, 22rem);
+      }
+
+      .hero--bleed h1 {
+        font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero--bleed {
+        min-height: 100svh;
+        background-size: cover, 150% auto;
+        background-position: center, 0% 20%;
+      }
+
+      .hero--bleed .hero__grid {
+        width: min(100% - 32px, var(--container));
+      }
+
+      .hero--bleed h1 {
+        font-size: clamp(1.5rem, 6.2vw, 2rem);
+        white-space: normal;
+      }
+
+      .hero--bleed .hero__actions .btn {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      body:has(.hero--bleed) .nav {
+        background: var(--milk);
+      }
+
+      body:has(.hero--bleed) .nav .nav__link,
+      body:has(.hero--bleed) .nav .header__cta {
+        color: inherit;
+      }
+
+      body:has(.hero--bleed) .nav .header__cta {
+        background: var(--brown);
+        color: var(--white);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Пропуск для клавиатуры и скринридеров -->
+  <a class="skip-link" href="#main">К содержимому</a>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="top">
+    <div class="header__inner">
+      <a class="logo" href="#top" aria-label="Елена Хрусталева — на главную">
+        <span class="logo__name">Елена Хрусталева</span>
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#about">Обо мне</a></li>
+          <li><a class="nav__link" href="#services">Услуги</a></li>
+          <li><a class="nav__link" href="#process">Как работаю</a></li>
+          <li><a class="nav__link" href="#projects">Проекты</a></li>
+          <li><a class="nav__link" href="#contact">Контакты</a></li>
+        </ul>
+        <a class="btn btn--primary header__cta" href="#contact">Обсудить проект</a>
+      </nav>
+
+      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" hidden></div>
+
+  <main id="main">
+    <!-- ========== HERO ========== -->
+    <section class="hero hero--bleed" aria-labelledby="hero-title">
+      <p class="visually-hidden">Фотография специалиста: Елена Хрусталева за работой за ноутбуком</p>
+      <div class="hero__grid">
+        <div class="hero__content">
+          <p class="hero__name">Елена Хрусталева</p>
+          <p class="eyebrow">Вайбкодер, создатель цифровых продуктов</p>
+
+          <h1 id="hero-title">
+            Превращаю идеи<br>
+            в работающие<br>
+            <span class="accent">цифровые</span><br>
+            <span class="accent">продукты</span>
+          </h1>
+
+          <p class="hero__lead">
+            Создаю сайты, веб-сервисы, AI-ассистентов, чат-ботов и автоматизации для экспертов, предпринимателей и онлайн-проектов.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contact">Обсудить проект</a>
+            <a class="btn btn--secondary" href="#projects">
+              Посмотреть работы
+              <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <p class="hero__note">От идеи до готового продукта — без сложной и затянутой разработки</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section section--white" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <p class="section-kicker"><span>01</span> Обо мне</p>
+        <h2 id="about-title">Обо мне</h2>
+        <p class="section-lead about__lead">Елена Хрусталева — SMM-специалист, создатель цифровых продуктов</p>
+
+        <div class="about__content">
+          <p class="about__text">
+            Меня зовут Елена Хрусталева. Я SMM-специалист, создатель цифровых продуктов. Создаю сайты, сервисы, AI-ассистентов, чат-ботов и автоматизации.
+          </p>
+
+          <div class="about__facts">
+            <article class="about__fact reveal">
+              <p>Более 2 лет работы с нейросетями</p>
+            </article>
+            <article class="about__fact reveal">
+              <p>AI-кодинг от идеи до запуска</p>
+            </article>
+            <article class="about__fact reveal">
+              <p>Создатель цифровых продуктов</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section section--milk" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <p class="section-kicker"><span>02</span> Услуги</p>
+        <h2 id="services-title">Что я могу создать для вашего проекта</h2>
+
+        <div class="services-grid">
+          <article class="card reveal">
+            <span class="card__num">01</span>
+            <div class="card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 8h18M8 20h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Сайты и лендинги</h3>
+            <p>Создание современных сайтов, лендингов и страниц для запуска продуктов, услуг, курсов и личных брендов.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__num">02</span>
+            <div class="card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="13" y="3" width="8" height="5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="13" y="10" width="8" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Веб-сервисы и приложения</h3>
+            <p>Создание личных кабинетов, обучающих платформ, мини-сервисов, квизов, калькуляторов и внутренних инструментов.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__num">03</span>
+            <div class="card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M5 15.5A6.5 6.5 0 1 1 12.8 20H8l-3 2.2v-6.7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M9 11h.01M12 11h.01M15 11h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Чат-боты и AI-сервисы</h3>
+            <p>Разработка помощников, которые консультируют клиентов, отвечают на вопросы, собирают заявки и помогают команде.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="card__num">04</span>
+            <div class="card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="6" cy="6" r="2.2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="18" cy="12" r="2.2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="6" cy="18" r="2.2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8.2 7.2 15.8 11M8.2 16.8 15.8 13" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Автоматизация процессов</h3>
+            <p>Создание систем для работы с клиентом, базами данных, документами и повторяющимися задачами.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROCESS ========== -->
+    <section class="section section--beige" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <p class="section-kicker"><span>03</span> Как работаю</p>
+        <h2 id="process-title">От идеи до запуска</h2>
+
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <span class="timeline__num">01</span>
+            <h3>Знакомство</h3>
+            <p>Обсуждаем идею, задачу и желаемый результат.</p>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__num">02</span>
+            <h3>Анализ</h3>
+            <p>Определяем структуру и основные функции.</p>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__num">03</span>
+            <h3>Прототип</h3>
+            <p>Продумываю пользовательский путь и будущий интерфейс.</p>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__num">04</span>
+            <h3>Разработка</h3>
+            <p>Собираю цифровой продукт и подключаю необходимую логику.</p>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__num">05</span>
+            <h3>Тестирование</h3>
+            <p>Проверяю отображение, сценарии и основные функции.</p>
+          </li>
+          <li class="timeline__item reveal">
+            <span class="timeline__num">06</span>
+            <h3>Запуск</h3>
+            <p>Подготавливаю проект к использованию и передаю готовый результат.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section class="section section--white" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <p class="section-kicker"><span>04</span> Портфолио</p>
+        <h2 id="projects-title">Проекты</h2>
+        <p class="section-lead">Раздел будет пополняться новыми работами</p>
+
+        <div class="projects-grid">
+
+          <!-- PROJECT 1 -->
+          <article class="project-card reveal">
+            <div class="project-card__media">
+              <img
+                src="images/projects/Чек-лист задач.jpg"
+                alt="Чек-лист задач — веб-приложение"
+                width="1200"
+                height="825"
+              >
+            </div>
+            <div class="project-card__body">
+              <p class="project-card__cat">Проект 01</p>
+              <h3>Чек-лист задач</h3>
+              <p>Минималистичный чек-лист для удобного управления повседневными задачами. Пользователь может добавлять задачи, отмечать выполненные и поддерживать список дел в понятном и визуально чистом формате.</p>
+              <ul class="project-card__tools" aria-label="Инструменты">
+                <li>Cursor</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+              <span class="project-card__status">Проект в разработке</span>
+            </div>
+          </article>
+
+          <!-- PROJECT 2 -->
+          <article class="project-card reveal">
+            <div class="project-card__media">
+              <img
+                src="images/Проект 02.jpg"
+                alt="Конструктор ТЗ в Telegram для создания каруселей"
+                width="1200"
+                height="825"
+              >
+            </div>
+            <div class="project-card__body">
+              <p class="project-card__cat">Проект 02</p>
+              <h3>Конструктор ТЗ в Telegram для создания каруселей</h3>
+              <p>Удобный инструмент, который помогает быстро создавать чёткие и структурированные технические задания для каруселей. Упрощает подготовку контента, экономит время и помогает получать качественный результат без лишних правок.</p>
+              <ul class="project-card__tools" aria-label="Инструменты">
+                <li>Cursor</li>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+              <a class="btn btn--secondary" href="https://khrustal25.github.io/konstruktor-tz/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+            </div>
+          </article>
+
+          <!-- PROJECT 3 -->
+          <article class="project-card project-card--soon reveal">
+            <div class="project-card__media">
+              <div class="project-placeholder" aria-hidden="true"></div>
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__status">Проект в разработке</span>
+              <h3>Проект 03</h3>
+            </div>
+          </article>
+
+          <!-- PROJECT 4 -->
+          <article class="project-card project-card--soon reveal">
+            <div class="project-card__media">
+              <div class="project-placeholder" aria-hidden="true"></div>
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__status">Проект в разработке</span>
+              <h3>Проект 04</h3>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ADVANTAGES ========== -->
+    <section class="section section--milk" id="advantages" aria-labelledby="advantages-title">
+      <div class="container">
+        <p class="section-kicker"><span>05</span> Преимущества</p>
+        <h2 id="advantages-title">Не просто код — а решение задачи</h2>
+
+        <ul class="advantages">
+          <li class="advantage reveal">
+            <span class="advantage__num">01</span>
+            <div>
+              <h3>Быстрый запуск</h3>
+              <p>Современные AI-инструменты помогают сократить часть рутинных этапов разработки.</p>
+            </div>
+          </li>
+          <li class="advantage reveal">
+            <span class="advantage__num">02</span>
+            <div>
+              <h3>Индивидуальный подход</h3>
+              <p>Продукт создаётся под конкретную задачу, а не собирается из случайного шаблона.</p>
+            </div>
+          </li>
+          <li class="advantage reveal">
+            <span class="advantage__num">03</span>
+            <div>
+              <h3>Понятная коммуникация</h3>
+              <p>Без необходимости разбираться в сложной технической терминологии.</p>
+            </div>
+          </li>
+          <li class="advantage reveal">
+            <span class="advantage__num">04</span>
+            <div>
+              <h3>AI + технологии</h3>
+              <p>Использую современные инструменты для разработки и поиска решений.</p>
+            </div>
+          </li>
+          <li class="advantage reveal">
+            <span class="advantage__num">05</span>
+            <div>
+              <h3>Поддержка после запуска</h3>
+              <p>Помогаю разобраться с готовым продуктом после его передачи.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section class="section section--sand" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-wrap">
+        <div class="contact-intro">
+          <p class="section-kicker"><span>06</span> Контакты</p>
+          <h2 id="contact-title">Обсудим ваш проект</h2>
+          <p class="section-lead">
+            Кратко опишите задачу — отвечу в Telegram или на почту. Можно написать сразу по кнопкам ниже.
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn btn--primary" href="https://t.me/lena_khrustal" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+            <a class="btn btn--secondary" href="mailto:smmehrustal25@gmail.com?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0">Написать на почту</a>
+            <a class="btn btn--secondary" href="https://vk.ru/smmidizayn" target="_blank" rel="noopener noreferrer">VK</a>
+          </div>
+        </div>
+
+        <form class="form" id="lead-form" novalidate>
+          <div class="form__field">
+            <label for="name">Имя *</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required>
+            <p class="form__error" id="name-error" hidden>Пожалуйста, укажите имя</p>
+          </div>
+
+          <div class="form__field">
+            <label for="contact-method">Способ связи *</label>
+            <select id="contact-method" name="contact-method" required>
+              <option value="" selected disabled>Выберите удачный способ связи</option>
+              <option value="Telegram">Telegram</option>
+              <option value="Email">Email</option>
+              <option value="VK">VK</option>
+            </select>
+            <p class="form__error" id="method-error" hidden>Выберите способ связи</p>
+          </div>
+
+          <div class="form__field">
+            <label for="contact-value">Ваш контакт *</label>
+            <input id="contact-value" name="contact" type="text" autocomplete="off" placeholder="Ник, email или ссылка для связи" required>
+            <p class="form__error" id="contact-error" hidden>Укажите контакт для связи</p>
+          </div>
+
+          <div class="form__field">
+            <label for="task">Краткое описание задачи</label>
+            <textarea id="task" name="task" rows="5" placeholder="Что нужно сделать и к какому сроку"></textarea>
+          </div>
+
+          <div class="form__field form__field--consent">
+            <label class="form__consent" for="privacy-consent">
+              <input id="privacy-consent" name="privacy" type="checkbox" required>
+              <span>
+                Я соглашаюсь на обработку персональных данных и принимаю
+                <a href="privacy.html" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Политику конфиденциальности</a>.
+              </span>
+            </label>
+            <p class="form__error" id="consent-error" hidden>Нужно согласие на обработку персональных данных</p>
+          </div>
+
+          <button class="btn btn--primary btn--full" type="submit">Отправить заявку</button>
+        </form>
+
+        <div class="form-success" id="form-success" hidden aria-live="polite">
+          <h3>Письмо подготовлено</h3>
+          <p>Если почтовая программа не открылась, напишите мне в Telegram.</p>
+          <div class="contact-actions">
+            <a class="btn btn--primary" href="https://t.me/lena_khrustal" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <p class="footer__title">Елена Хрусталева</p>
+        <p class="footer__meta">SMM-специалист, создатель цифровых продуктов</p>
+      </div>
+
+      <div class="footer__contacts">
+        <p class="footer__label">Контакты:</p>
+        <p class="footer__row">
+          Telegram:
+          <a href="https://t.me/lena_khrustal" target="_blank" rel="noopener noreferrer">https://t.me/lena_khrustal</a>
+        </p>
+        <p class="footer__row">
+          Почта:
+          <a href="mailto:smmehrustal25@gmail.com">smmehrustal25@gmail.com</a>
+        </p>
+        <a class="footer__privacy" href="privacy.html">Политика конфиденциальности</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="footer__copy">
+        © <span id="footer-year"></span> Елена Хрусталева. Все права защищены.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+/* =========================================================
+   Поведение сайта: меню, плавный скролл, анимации, форма
+   Комментарии рассчитаны на новичка
+   ========================================================= */
+
+(function () {
+  const header = document.querySelector(".header");
+  const nav = document.querySelector("#site-nav");
+  const burger = document.querySelector(".burger");
+  const overlay = document.querySelector(".nav-overlay");
+  const form = document.querySelector("#lead-form");
+  const success = document.querySelector("#form-success");
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- Header при прокрутке ----- */
+  function onScroll() {
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ----- Мобильное меню ----- */
+  function setMobileNavA11y(isOpen) {
+    if (!nav) return;
+    if (isMobileNav()) {
+      if (isOpen) {
+        nav.removeAttribute("aria-hidden");
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.removeAttribute("tabindex");
+        });
+      } else {
+        nav.setAttribute("aria-hidden", "true");
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.setAttribute("tabindex", "-1");
+        });
+      }
+    } else {
+      nav.removeAttribute("aria-hidden");
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.removeAttribute("tabindex");
+      });
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("is-open");
+    burger.classList.add("is-open");
+    if (overlay) {
+      overlay.classList.add("is-visible");
+      overlay.hidden = false;
+    }
+    burger.setAttribute("aria-expanded", "true");
+    burger.setAttribute("aria-label", "Закрыть меню");
+    setMobileNavA11y(true);
+    document.body.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    nav.classList.remove("is-open");
+    burger.classList.remove("is-open");
+    if (overlay) {
+      overlay.classList.remove("is-visible");
+      window.setTimeout(function () {
+        if (!nav.classList.contains("is-open")) overlay.hidden = true;
+      }, 400);
+    }
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Открыть меню");
+    setMobileNavA11y(false);
+    document.body.classList.remove("menu-open");
+  }
+
+  function toggleMenu() {
+    if (nav.classList.contains("is-open")) closeMenu();
+    else openMenu();
+  }
+
+  function isMobileNav() {
+    return window.matchMedia("(max-width: 1100px)").matches;
+  }
+
+  /* На iOS fixed-меню внутри sticky-шапки не открывается — выносим меню в body */
+  function placeNav() {
+    var inner = document.querySelector(".header__inner");
+    if (!nav || !inner || !burger) return;
+
+    if (isMobileNav()) {
+      if (nav.parentElement !== document.body) {
+        document.body.appendChild(nav);
+      }
+      if (!nav.classList.contains("is-open")) setMobileNavA11y(false);
+    } else {
+      if (nav.parentElement !== inner) {
+        inner.insertBefore(nav, burger);
+      }
+      if (nav.classList.contains("is-open")) closeMenu();
+      setMobileNavA11y(true);
+    }
+  }
+
+  placeNav();
+  window.addEventListener("resize", placeNav);
+
+  if (burger) {
+    burger.addEventListener("click", function (event) {
+      event.preventDefault();
+      toggleMenu();
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", closeMenu);
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  /* ----- Плавный переход по якорям с учётом липкой шапки ----- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      const id = link.getAttribute("href");
+      if (!id || id === "#") {
+        event.preventDefault();
+        return;
+      }
+
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      event.preventDefault();
+      closeMenu();
+
+      const top = target.getBoundingClientRect().top + window.scrollY - header.offsetHeight - 8;
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: prefersReduced ? "auto" : "smooth"
+      });
+    });
+  });
+
+  /* ----- Появление блоков при скролле ----- */
+  const revealItems = document.querySelectorAll(".reveal");
+
+  if (prefersReduced) {
+    revealItems.forEach(function (item) {
+      item.classList.add("is-visible");
+    });
+  } else if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    revealItems.forEach(function (item, index) {
+      item.style.transitionDelay = (index % 6) * 70 + "ms";
+      observer.observe(item);
+    });
+  } else {
+    revealItems.forEach(function (item) {
+      item.classList.add("is-visible");
+    });
+  }
+
+  /* ----- Форма заявки: проверка и подготовка письма ----- */
+  function showError(input, errorEl, message) {
+    input.closest(".form__field").classList.add("is-invalid");
+    errorEl.textContent = message;
+    errorEl.hidden = false;
+  }
+
+  function clearError(input, errorEl) {
+    input.closest(".form__field").classList.remove("is-invalid");
+    errorEl.hidden = true;
+  }
+
+  if (form) {
+    const nameInput = form.querySelector("#name");
+    const methodSelect = form.querySelector("#contact-method");
+    const contactInput = form.querySelector("#contact-value");
+    const taskInput = form.querySelector("#task");
+    const consentInput = form.querySelector("#privacy-consent");
+    const nameError = form.querySelector("#name-error");
+    const methodError = form.querySelector("#method-error");
+    const contactError = form.querySelector("#contact-error");
+    const consentError = form.querySelector("#consent-error");
+
+    nameInput.addEventListener("input", function () {
+      if (nameInput.value.trim()) clearError(nameInput, nameError);
+    });
+
+    methodSelect.addEventListener("change", function () {
+      if (methodSelect.value) clearError(methodSelect, methodError);
+      if (methodSelect.value === "VK") {
+        contactInput.placeholder = "Ссылка на ваш профиль VK";
+      } else if (methodSelect.value === "Telegram") {
+        contactInput.placeholder = "Ник в Telegram";
+      } else if (methodSelect.value === "Email") {
+        contactInput.placeholder = "Ваш email";
+      } else {
+        contactInput.placeholder = "Ник, email или ссылка для связи";
+      }
+    });
+
+    contactInput.addEventListener("input", function () {
+      if (contactInput.value.trim()) clearError(contactInput, contactError);
+    });
+
+    if (consentInput) {
+      consentInput.addEventListener("change", function () {
+        if (consentInput.checked) clearError(consentInput, consentError);
+      });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var valid = true;
+
+      if (!nameInput.value.trim()) {
+        showError(nameInput, nameError, "Пожалуйста, укажите имя");
+        valid = false;
+      } else {
+        clearError(nameInput, nameError);
+      }
+
+      if (!methodSelect.value) {
+        showError(methodSelect, methodError, "Выберите способ связи");
+        valid = false;
+      } else {
+        clearError(methodSelect, methodError);
+      }
+
+      if (!contactInput.value.trim()) {
+        showError(contactInput, contactError, "Укажите контакт для связи");
+        valid = false;
+      } else {
+        clearError(contactInput, contactError);
+      }
+
+      if (!consentInput || !consentInput.checked) {
+        showError(consentInput, consentError, "Нужно согласие на обработку персональных данных");
+        valid = false;
+      } else {
+        clearError(consentInput, consentError);
+      }
+
+      if (!valid) {
+        const firstError = form.querySelector(".is-invalid input, .is-invalid select, .is-invalid textarea");
+        if (firstError) firstError.focus();
+        return;
+      }
+
+      var subject = "Заявка с сайта Елены Хрусталевой";
+      var body =
+        "Имя: " + nameInput.value.trim() + "\n" +
+        "Способ связи: " + methodSelect.value + "\n" +
+        "Контакт: " + contactInput.value.trim() + "\n" +
+        "Описание задачи: " + (taskInput.value.trim() || "—");
+
+      var mailto =
+        "mailto:smmehrustal25@gmail.com" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+      window.location.href = mailto;
+
+      if (success) {
+        form.hidden = true;
+        success.hidden = false;
+        success.querySelector("h3").focus?.();
+      }
+    });
+  }
+
+  /* ----- Год в копирайте подвала ----- */
+  var yearEl = document.querySelector("#footer-year");
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
+})();
+
+</script>
+</body>
+</html>
