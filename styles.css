@@ -681,6 +681,12 @@ ol {
   overflow: hidden;
 }
 
+a.project-card__media {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .project-card__media img {
   width: 100%;
   height: 100%;
