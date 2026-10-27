@@ -57,7 +57,10 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+}
+
+html {
+  overflow-x: clip;
 }
 
 body {
@@ -785,7 +788,11 @@ a.project-card__media {
 
 .project-card .btn {
   margin-top: auto;
-  align-self: flex-start;
+  align-self: stretch;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 /* ---------- Advantages ---------- */
@@ -1116,15 +1123,41 @@ body.menu-open {
     width: 100%;
     max-width: 100%;
     position: relative;
-    overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
 
   .container,
   .header__inner {
-    width: calc(100% - 40px);
-    max-width: 1180px;
+    width: min(100% - 40px, var(--container));
+    max-width: 100%;
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  .section,
+  .cta-band,
+  .footer,
+  .hero {
+    max-width: 100%;
+  }
+
+  .card,
+  .project-card,
+  .form,
+  .form-success,
+  .advantage,
+  .timeline__item {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .card h3,
+  .project-card h3,
+  .project-card__body > p,
+  .card p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .reveal {
@@ -1142,8 +1175,15 @@ body.menu-open {
     background: #fdfbf7;
   }
 
-  .btn {
+  .btn,
+  .burger,
+  .nav__link,
+  .form__consent {
     touch-action: manipulation;
+  }
+
+  .btn {
+    min-height: 48px;
   }
 
   .hero__grid {
@@ -1260,14 +1300,22 @@ body.menu-open {
     gap: 24px;
   }
 
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .contact-actions .btn {
     width: auto;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
+    min-width: min(100%, 11rem);
     justify-content: center;
   }
 
   .contact-actions a.btn[href*="vk."] {
     min-width: 7.5rem;
+    flex: 0 1 auto;
   }
 
   .section {
@@ -1308,10 +1356,28 @@ body.menu-open {
 }
 
 /* ---------- Адаптив: 390 ---------- */
+@media (max-width: 768px) {
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project-card__body {
+    padding: 22px 18px 22px;
+  }
+
+  .project-card .btn,
+  .services-grid .card .btn {
+    width: 100%;
+  }
+}
+
 @media (max-width: 640px) {
   .container,
   .header__inner {
     width: min(100% - 32px, var(--container));
+    max-width: 100%;
   }
 
   body {
@@ -1363,12 +1429,14 @@ body.menu-open {
 
   .timeline {
     margin-top: 36px;
-    padding-left: 8px;
+    padding-left: 0;
+    overflow: visible;
   }
 
   .timeline__item {
-    padding: 0 0 28px 56px;
+    padding: 0 0 28px 52px;
     border-left: 1px solid var(--taupe);
+    margin-left: 12px;
   }
 
   .timeline__item:last-child {
@@ -1377,7 +1445,7 @@ body.menu-open {
   }
 
   .timeline__num {
-    left: -23px;
+    left: -20px;
   }
 
   .advantage {
@@ -1398,24 +1466,58 @@ body.menu-open {
     width: 100%;
   }
 
-  .contact-actions .btn {
-    width: 100%;
-    justify-content: center;
+  .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
+  .contact-actions .btn,
   .contact-actions a.btn[href*="vk."] {
-    width: auto;
-    min-width: 7.5rem;
-    align-self: flex-start;
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+    justify-content: center;
   }
 
   .form,
   .form-success {
-    padding: 26px 20px;
+    padding: 24px 16px;
+    max-width: 100%;
   }
 
   .card {
-    padding: 26px 22px;
+    padding: 22px 16px;
+  }
+
+  .footer__row,
+  .footer__contacts a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .logo__name {
+    font-size: clamp(0.95rem, 3.8vw, 1.15rem);
+    max-width: min(58vw, 14rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .container,
+  .header__inner {
+    width: min(100% - 24px, var(--container));
+  }
+
+  .btn {
+    padding-inline: 18px;
+    font-size: 0.8rem;
+  }
+
+  .project-card__tools {
+    gap: 6px;
+  }
+
+  .project-card__tools li {
+    padding: 6px 10px;
   }
 
   .section-kicker {

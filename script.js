@@ -114,7 +114,14 @@
   }
 
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") closeMenu();
+    if (event.key !== "Escape") return;
+    closeMenu();
+    var successBlock = document.querySelector("#form-success");
+    var leadForm = document.querySelector("#lead-form");
+    if (successBlock && leadForm && !successBlock.hidden) {
+      successBlock.hidden = true;
+      leadForm.hidden = false;
+    }
   });
 
   /* ----- Плавный переход по якорям с учётом липкой шапки ----- */
@@ -276,9 +283,22 @@
       if (success) {
         form.hidden = true;
         success.hidden = false;
-        success.querySelector("h3").focus?.();
+        var successTitle = success.querySelector("h3");
+        if (successTitle && typeof successTitle.focus === "function") {
+          successTitle.focus();
+        }
       }
     });
+
+    var successClose = document.querySelector("#form-success-close");
+    if (successClose && success) {
+      successClose.addEventListener("click", function () {
+        success.hidden = true;
+        form.hidden = false;
+        var submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.focus();
+      });
+    }
   }
 
   /* ----- Год в копирайте подвала ----- */

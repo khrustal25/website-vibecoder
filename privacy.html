@@ -69,6 +69,46 @@
       gap: 12px;
       margin-top: 36px;
     }
+
+    .back-nav {
+      margin: 0 0 20px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 8px 2px;
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--coffee);
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: var(--chocolate);
+    }
+
+    @media (max-width: 640px) {
+      .privacy-page {
+        padding: 28px 0 72px;
+      }
+
+      .privacy-block {
+        padding: 22px 18px;
+      }
+
+      .privacy-actions {
+        flex-direction: column;
+      }
+
+      .privacy-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -105,6 +145,9 @@
 
   <main id="main" class="privacy-page">
     <div class="container">
+      <p class="back-nav">
+        <a class="back-link" href="index.html">← Назад</a>
+      </p>
       <p class="section-kicker"><span>Документ</span> Конфиденциальность</p>
       <h1>Политика конфиденциальности</h1>
       <p class="section-lead">
@@ -150,8 +193,8 @@
       </section>
 
       <div class="privacy-actions">
-        <a class="btn btn--primary" href="index.html#contact">Вернуться к заявке</a>
-        <a class="btn btn--secondary" href="index.html">На главную</a>
+        <a class="btn btn--secondary" href="index.html">← Назад на главную</a>
+        <a class="btn btn--primary" href="index.html#contact">К заявке</a>
       </div>
     </div>
   </main>
